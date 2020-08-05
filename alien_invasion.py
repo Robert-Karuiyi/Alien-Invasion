@@ -1,3 +1,4 @@
+#! python3
 import sys
 from time import sleep
 
