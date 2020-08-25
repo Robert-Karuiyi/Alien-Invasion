@@ -1,4 +1,4 @@
-class GameStats:
+class GameStats():
     """Track statistics for Alien Invasion."""
 
     def __init__(self, ai_game):
@@ -9,6 +9,18 @@ class GameStats:
         # Start Alien Invasion in an inactive state.
         self.game_active = False
 
+        # Try to see if there's a high score record.
+        try:
+            with open("high_score.txt") as f:
+                self.high_score = float(f.read())
+        except FileNotFoundError:
+            self.high_score = 0
+
     def reset_stats(self):
         """Initialize statistics that can change during the game."""
         self.ships_left = self.settings.ship_limit
+        self.score = 0
+        self.level = 1
+
+
+    
